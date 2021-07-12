@@ -46,7 +46,7 @@ if [ "$total_high" != "0" ]; then
   # The sed command strips out extra verbage from Nagios-generated incidents
   echo "High urgency: | color=red href=${pdurl}"
   # shellcheck disable=2016
-  echo "$(echo "$output" | /usr/local/bin/jq '.incidents[] | select(.urgency=="high") | .title' | sed 's/^"\(SERVICEDESC=\)*\([^;]*\)\(.*\)"/\2/') | href=${pdurl}"
+  echo "$output" | /usr/local/bin/jq '.incidents[] | select(.urgency=="low") | .title' | sed 's/^"\(SERVICEDESC=\)*\([^;]*\)\(.*\)"/\2/' | sed "s#\$# | href=${pdurl}#"
 fi
 
 if [ "$total_low" != "0" ]; then
@@ -54,7 +54,7 @@ if [ "$total_low" != "0" ]; then
   # The sed command strips out extra verbage from Nagios-generated incidents
   echo "Low urgency: | color=blue href=${pdurl}"
   # shellcheck disable=2016
-  echo "$(echo "$output" | /usr/local/bin/jq '.incidents[] | select(.urgency=="low") | .title' | sed 's/^"\(SERVICEDESC=\)*\([^;]*\)\(.*\)"/\2/') | href=${pdurl}"
+  echo "$output" | /usr/local/bin/jq '.incidents[] | select(.urgency=="low") | .title' | sed 's/^"\(SERVICEDESC=\)*\([^;]*\)\(.*\)"/\2/' | sed "s#\$# | href=${pdurl}#"
 fi
 
 exit 0
