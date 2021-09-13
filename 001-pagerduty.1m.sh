@@ -7,7 +7,7 @@ set -euo pipefail
 # <xbar.author>Seren Thompson</xbar.author>
 # <xbar.author.github>seren</xbar.author.github>
 # <xbar.desc>Displays the number of triggered Pagerduty.com incidents assigned to a user</xbar.desc>
-# <xbar.image>https://i.imgur.com/2p2nFg8.png</xbar.image>
+# <xbar.image>https://imgur.com/LJR06et.png</xbar.image>
 # <xbar.dependencies>bash,jq</xbar.dependencies>
 # <xbar.abouturl>https://github.com/seren/xbar-plugins/</xbar.abouturl>
 
@@ -46,7 +46,7 @@ if [ "$total_high" != "0" ]; then
   # The sed command strips out extra verbage from Nagios-generated incidents
   echo "High urgency: | color=red href=${pdurl}"
   # shellcheck disable=2016
-  echo "$output" | /usr/local/bin/jq '.incidents[] | select(.urgency=="low") | .title' | sed 's/^"\(SERVICEDESC=\)*\([^;]*\)\(.*\)"/\2/' | sed "s#\$# | href=${pdurl}#"
+  echo "$output" | /usr/local/bin/jq '.incidents[] | select(.urgency=="high") | .title' | sed 's/^"\(SERVICEDESC=\)*\([^;]*\)\(.*\)"/\2/' | sed "s#\$# | href=${pdurl}#"
 fi
 
 if [ "$total_low" != "0" ]; then

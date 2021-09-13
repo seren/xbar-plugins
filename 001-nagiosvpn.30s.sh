@@ -7,7 +7,7 @@ set -uo pipefail
 # <xbar.author>Seren Thompson</xbar.author>
 # <xbar.author.github>seren</xbar.author.github>
 # <xbar.desc>Nagios status summary with VPN detection. Based on nagios.30s.sh by Rob DeSanno</xbar.desc>
-# <xbar.image>https://i.imgur.com/aI8uC53.png</xbar.image>
+# <xbar.image>https://imgur.com/UvWrm5Y</xbar.image>
 # <xbar.dependencies>bash</xbar.dependencies>
 # <xbar.abouturl>https://github.com/seren/xbar-plugins/</xbar.abouturl>
 
